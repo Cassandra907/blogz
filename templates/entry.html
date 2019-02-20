@@ -4,6 +4,6 @@
     
     <h1>{{post.title}}</h1>
     <p>{{post.body}}</p>
-    <p><small>written by <a href="/blog?user={{post.owner_id}}"></small></p>
+    <p><small>written by <a href="/blog?user={{post.user_id}}">{{post.owner.username}}</small></p>
                
 {% endblock %}
