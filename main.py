@@ -89,14 +89,23 @@ def login():
         password = request.form['password']
 
         user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+        if user and user.password == username:
             session['username'] = username
             flash('Logged in')
+            return redirect('/newpost')
+        else:
+            flash('Username is incorrect', 'error')
+
+        if user.password and user == password:
+            session['password'] = password
             return redirect('/newpost')
         else:
             flash('Password is incorrect', 'error')
     
     return render_template('login.html', header='Login')
+
+
+
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
