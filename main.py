@@ -96,13 +96,13 @@ def login():
         else:
             flash('Username is incorrect', 'error')
 
-        if user.password and user == password:
+        if user and user.password == password:
             session['password'] = password
             return redirect('/newpost')
         else:
             flash('Password is incorrect', 'error')
     
-    return render_template('login.html', header='Login')
+    return render_template('login.html')
 
 
 
